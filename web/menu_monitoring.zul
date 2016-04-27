@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window title="PROGRESS TUKAR GULING">
+        <listbox>
+          
+            <listhead>
+                <listheader label="NO TTRB"/>
+                <listheader label="NO BKB"/>
+                <listheader label="TGL BKB"/>
+                <listheader label="OUTLET"/>
+                <listheader label="TGL TERIMA"/>
+                <listheader label="SALES/EXPEDISI"/>
+                <listheader label="TGL KEMBALI"/>
+                <listheader label="KETERANGAN"/>
+            </listhead>
+            <listitem sclass="mainList">
+                <listcell label="asdas"/>
+                <listcell label="asdas"/>
+                <listcell label="asd"/>
+                <listcell label="asd"/>
+                <listcell label="asd"/>
+                <listcell label="asd"/>
+                <listcell label="asdas"/>
+                <listcell label="asd"/>    
+            </listitem>
+            <listitem sclass="mainList">
+                <listcell label="asdas"/>
+                <listcell label="asdas"/>
+                <listcell label="asd"/>
+                <listcell label="asd"/>
+                <listcell label="asd"/>
+                <listcell label="asd"/>
+                <listcell label="asdas"/>
+                <listcell label="asd"/>    
+            </listitem>
+            <listitem sclass="mainList">
+                <listcell label="asdas"/>
+                <listcell label="asdas"/>
+                <listcell label="asd"/>
+                <listcell label="asd"/>
+                <listcell label="asd"/>
+                <listcell label="asd"/>
+                <listcell label="asdas"/>
+                <listcell label="asd"/>    
+            </listitem>
+            <listitem sclass="mainList">
+                <listcell label="asdas"/>
+                <listcell label="asdas"/>
+                <listcell label="asd"/>
+                <listcell label="asd"/>
+                <listcell label="asd"/>
+                <listcell label="asd"/>
+                <listcell label="asdas"/>
+                <listcell label="asd"/>    
+            </listitem>
+        </listbox>
+    </window>
+
+</zk>
