@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50525
 File Encoding         : 65001
 
-Date: 2016-04-27 16:55:03
+Date: 2016-04-27 17:12:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -66,6 +66,30 @@ CREATE TABLE `printer` (
 -- Records of printer
 -- ----------------------------
 INSERT INTO `printer` VALUES ('noprint', 'noprint', '16');
+
+-- ----------------------------
+-- Table structure for progress
+-- ----------------------------
+DROP TABLE IF EXISTS `progress`;
+CREATE TABLE `progress` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `no_ttrb` varchar(255) DEFAULT NULL,
+  `no_bkb` varchar(255) DEFAULT NULL,
+  `tgl_bkb` varchar(255) DEFAULT NULL,
+  `kode_outlet` bigint(20) DEFAULT NULL,
+  `nama_checker` varchar(255) DEFAULT NULL,
+  `waktu_terima_checker` datetime DEFAULT NULL,
+  `nama_dir_exp` varchar(255) DEFAULT NULL,
+  `waktu_terima_dir_exp` datetime DEFAULT NULL,
+  `nama_penerima_kembali` varchar(255) DEFAULT NULL,
+  `waktu_kembali` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of progress
+-- ----------------------------
+INSERT INTO `progress` VALUES ('1', 'asdas', 'asdas', '2016-04-27 17:12:15', '12312', 'SCASD', '2016-04-27 17:12:15', 'asdas', '2016-04-27 17:12:15', 'asdas', '2016-04-27 17:12:15');
 
 -- ----------------------------
 -- Table structure for setting

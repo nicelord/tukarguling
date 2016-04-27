@@ -45,7 +45,7 @@ public class Progress implements Serializable {
     Timestamp waktuTerimaDirExp;
 
     
-    String namaPenerimakembali;
+    String namaPenerimaKembali;
     @Temporal(TemporalType.TIMESTAMP)
     Timestamp waktuKembali;
 
@@ -140,13 +140,15 @@ public class Progress implements Serializable {
         this.namaChecker = namaChecker;
     }
 
-    public String getNamaPenerimakembali() {
-        return namaPenerimakembali;
+    public String getNamaPenerimaKembali() {
+        return namaPenerimaKembali;
     }
 
-    public void setNamaPenerimakembali(String namaPenerimakembali) {
-        this.namaPenerimakembali = namaPenerimakembali;
+    public void setNamaPenerimaKembali(String namaPenerimaKembali) {
+        this.namaPenerimaKembali = namaPenerimaKembali;
     }
+
+ 
     
     
     
