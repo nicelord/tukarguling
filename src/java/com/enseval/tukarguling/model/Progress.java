@@ -35,8 +35,8 @@ public class Progress implements Serializable {
     String namaOutlet = "";
     
     
-    @ManyToOne
-    User namaChecker;
+    
+    String namaChecker;
     @Temporal(TemporalType.TIMESTAMP)
     Timestamp waktuTerimaChecker;
     
@@ -44,8 +44,8 @@ public class Progress implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     Timestamp waktuTerimaDirExp;
 
-    @ManyToOne
-    User namaPenerimakembali;
+    
+    String namaPenerimakembali;
     @Temporal(TemporalType.TIMESTAMP)
     Timestamp waktuKembali;
 
@@ -97,13 +97,7 @@ public class Progress implements Serializable {
         this.namaOutlet = namaOutlet;
     }
 
-    public User getNamaChecker() {
-        return namaChecker;
-    }
-
-    public void setNamaChecker(User namaChecker) {
-        this.namaChecker = namaChecker;
-    }
+  
 
     public Timestamp getWaktuTerimaChecker() {
         return waktuTerimaChecker;
@@ -129,13 +123,6 @@ public class Progress implements Serializable {
         this.waktuTerimaDirExp = waktuTerimaDirExp;
     }
 
-    public User getNamaPenerimakembali() {
-        return namaPenerimakembali;
-    }
-
-    public void setNamaPenerimakembali(User namaPenerimakembali) {
-        this.namaPenerimakembali = namaPenerimakembali;
-    }
 
     public Timestamp getWaktuKembali() {
         return waktuKembali;
@@ -143,6 +130,22 @@ public class Progress implements Serializable {
 
     public void setWaktuKembali(Timestamp waktuKembali) {
         this.waktuKembali = waktuKembali;
+    }
+
+    public String getNamaChecker() {
+        return namaChecker;
+    }
+
+    public void setNamaChecker(String namaChecker) {
+        this.namaChecker = namaChecker;
+    }
+
+    public String getNamaPenerimakembali() {
+        return namaPenerimakembali;
+    }
+
+    public void setNamaPenerimakembali(String namaPenerimakembali) {
+        this.namaPenerimakembali = namaPenerimakembali;
     }
     
     
