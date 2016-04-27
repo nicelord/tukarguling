@@ -1,60 +1,183 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <zk xmlns="http://www.zkoss.org/2005/zul">
-    <window title="PROGRESS TUKAR GULING">
-        <listbox>
-          
-            <listhead>
+    <window title="PROGRESS TUKAR GULING"
+            vflex="3"
+            apply="org.zkoss.bind.BindComposer"  viewModel="@id('vm') @init('com.enseval.tukarguling.vm.MenuMonitoringVM')">
+        
+        <listbox
+            mold="paging" width="100%" vflex="true" autopaging="true" 
+            checkmark="true"
+            multiple="true"
+            model="@load(vm.listProgress)">    
+           
+            <auxhead >
+                <auxheader colspan="2">
+                    <button vflex="3" hflex="3" 
+                            sclass="btn-success btn-xs" 
+                            iconSclass="glyphicon glyphicon-transfer" 
+                            label="CREATE NEW" 
+                            onClick="@command('win_customer_list')" />
+                </auxheader>
+                <auxheader colspan="10">
+                </auxheader>
+            </auxhead>
+                
+            <listhead >
+                <listheader width="30px"/>
                 <listheader label="NO TTRB"/>
                 <listheader label="NO BKB"/>
                 <listheader label="TGL BKB"/>
                 <listheader label="OUTLET"/>
                 <listheader label="TGL TERIMA"/>
+                <listheader label="CHCEKER"/>
+                <listheader label="TGL SERAH"/>
                 <listheader label="SALES/EXPEDISI"/>
                 <listheader label="TGL KEMBALI"/>
+                <listheader label="CHCEKER"/>
                 <listheader label="KETERANGAN"/>
             </listhead>
-            <listitem sclass="mainList">
-                <listcell label="asdas"/>
-                <listcell label="asdas"/>
-                <listcell label="asd"/>
-                <listcell label="asd"/>
-                <listcell label="asd"/>
-                <listcell label="asd"/>
-                <listcell label="asdas"/>
-                <listcell label="asd"/>    
-            </listitem>
-            <listitem sclass="mainList">
-                <listcell label="asdas"/>
-                <listcell label="asdas"/>
-                <listcell label="asd"/>
-                <listcell label="asd"/>
-                <listcell label="asd"/>
-                <listcell label="asd"/>
-                <listcell label="asdas"/>
-                <listcell label="asd"/>    
-            </listitem>
-            <listitem sclass="mainList">
-                <listcell label="asdas"/>
-                <listcell label="asdas"/>
-                <listcell label="asd"/>
-                <listcell label="asd"/>
-                <listcell label="asd"/>
-                <listcell label="asd"/>
-                <listcell label="asdas"/>
-                <listcell label="asd"/>    
-            </listitem>
-            <listitem sclass="mainList">
-                <listcell label="asdas"/>
-                <listcell label="asdas"/>
-                <listcell label="asd"/>
-                <listcell label="asd"/>
-                <listcell label="asd"/>
-                <listcell label="asd"/>
-                <listcell label="asdas"/>
-                <listcell label="asd"/>    
-            </listitem>
+            
+            
+            <auxhead>
+                <auxheader>
+                    <image id="" src="img/filter.png" width=""  height=""/>
+                </auxheader>
+                <auxheader>
+                    <textbox instant="true" value="" hflex="3" onChange="@command('')"/>
+                </auxheader>       
+                <auxheader>
+                    <textbox instant="true" value="" hflex="3" onChange="@command('')"/>
+                </auxheader> 
+                <auxheader>
+                    <button popup="popDt1" iconSclass="glyphicon glyphicon-filter" label="FILTER" onClick="" sclass="btn-info btn-xs" hflex="3" />
+                          
+                    <popup id="popDt1" width="200px" style="word-wrap">
+                        <vlayout>
+                            <label value="Dari :" />
+                            <datebox id="dtStart1" format="yyyy-MM-dd" readonly="true" hflex="3"/>
+                            <label value="Sampai :" />
+                            <datebox id="dtEnd1" format="yyyy-MM-dd" constraint="no future: now or never" readonly="true" hflex="3"/>
+                            <div class="btn-group" hflex="3">
+                                <button label="TAMPILKAN" onClick="@command('')" sclass="btn-info btn-xs" hflex="3" />
+                                <button label="RESET" onClick="@command('')" sclass="btn-default btn-xs" hflex="3" >
+                                    <attribute name="onClick">
+                                        startDate.setText("");
+                                        endDate.setText("");
+                                    </attribute>
+                                </button>
+                            </div>
+                        </vlayout>
+                    </popup>
+                </auxheader> 
+                <auxheader>
+                    <textbox instant="true" value="" hflex="3" onChange="@command('')"/>
+                </auxheader> 
+                <auxheader>
+                    <button popup="popDt2" iconSclass="glyphicon glyphicon-filter" label="FILTER" onClick="" sclass="btn-info btn-xs" hflex="3" />
+                          
+                    <popup id="popDt2" width="200px" style="word-wrap">
+                        <vlayout>
+                            <label value="Dari :" />
+                            <datebox id="dtStart2" format="yyyy-MM-dd" readonly="true" hflex="3"/>
+                            <label value="Sampai :" />
+                            <datebox id="dtEnd2" format="yyyy-MM-dd" constraint="no future: now or never" readonly="true" hflex="3"/>
+                            <div class="btn-group" hflex="3">
+                                <button label="TAMPILKAN" onClick="@command('')" sclass="btn-info btn-xs" hflex="3" />
+                                <button label="RESET" onClick="@command('')" sclass="btn-default btn-xs" hflex="3" >
+                                    <attribute name="onClick">
+                                        startDate.setText("");
+                                        endDate.setText("");
+                                    </attribute>
+                                </button>
+                            </div>
+                        </vlayout>
+                    </popup>
+                </auxheader> 
+                <auxheader>
+                    <textbox instant="true" value="" hflex="3" onChange="@command('')"/>
+                </auxheader> 
+                <auxheader>
+                    <button popup="popDt3" iconSclass="glyphicon glyphicon-filter" label="FILTER" onClick="" sclass="btn-info btn-xs" hflex="3" />
+                          
+                    <popup id="popDt3" width="200px" style="word-wrap">
+                        <vlayout>
+                            <label value="Dari :" />
+                            <datebox id="dtStart3" format="yyyy-MM-dd" readonly="true" hflex="3"/>
+                            <label value="Sampai :" />
+                            <datebox id="dtEnd3" format="yyyy-MM-dd" constraint="no future: now or never" readonly="true" hflex="3"/>
+                            <div class="btn-group" hflex="3">
+                                <button label="TAMPILKAN" onClick="@command('')" sclass="btn-info btn-xs" hflex="3" />
+                                <button label="RESET" onClick="@command('')" sclass="btn-default btn-xs" hflex="3" >
+                                    <attribute name="onClick">
+                                        startDate.setText("");
+                                        endDate.setText("");
+                                    </attribute>
+                                </button>
+                            </div>
+                        </vlayout>
+                    </popup>
+                </auxheader> 
+                <auxheader>
+                    <textbox instant="true" value="" hflex="3" onChange="@command('')"/>
+                </auxheader> 
+                <auxheader>
+                    <button popup="popDt4" iconSclass="glyphicon glyphicon-filter" label="FILTER" onClick="" sclass="btn-info btn-xs" hflex="3" />
+                          
+                    <popup id="popDt4" width="200px" style="word-wrap">
+                        <vlayout>
+                            <label value="Dari :" />
+                            <datebox id="dtStart4" format="yyyy-MM-dd" readonly="true" hflex="3"/>
+                            <label value="Sampai :" />
+                            <datebox id="dtEnd4" format="yyyy-MM-dd" constraint="no future: now or never" readonly="true" hflex="3"/>
+                            <div class="btn-group" hflex="3">
+                                <button label="TAMPILKAN" onClick="@command('')" sclass="btn-info btn-xs" hflex="3" />
+                                <button label="RESET" onClick="@command('')" sclass="btn-default btn-xs" hflex="3" >
+                                    <attribute name="onClick">
+                                        startDate.setText("");
+                                        endDate.setText("");
+                                    </attribute>
+                                </button>
+                            </div>
+                        </vlayout>
+                    </popup>
+                </auxheader> 
+                <auxheader>
+                    <textbox instant="true" value="" hflex="3" onChange="@command('')"/>
+                </auxheader> 
+                <auxheader>
+                    <textbox instant="true" value="" hflex="3" onChange="@command('')"/>
+                </auxheader> 
+            </auxhead>
+            <template name="model" var="s">
+                <listitem sclass="mainList">
+                    <listcell />
+                    <listcell label="@load(s.noTTRB)"/> <!-- -->
+                    <listcell label="@load(s.noBKB)"/> <!-- -->
+                    <listcell label="@load(s.tglBKB) @converter('formatedDate', format='dd-MM-yyyy')"/> <!-- -->
+                    <listcell label="@load(s.kodeOutlet)"/> <!-- -->
+                    <listcell label="@load(s.tglTerima) @converter('formatedDate', format='dd-MM-yyyy')" sclass="left-border-solid" /> <!-- -->
+                    <listcell label="@load(s.namaChecker)"/> <!-- -->
+                    <listcell label="@load(s.tglSerah) @converter('formatedDate', format='dd-MM-yyyy')" sclass="left-border-solid"/> <!-- -->
+                    <listcell label="@load(s.namaDirExp)"/> <!-- -->
+                    <listcell label="@load(s.tglKembali) @converter('formatedDate', format='dd-MM-yyyy')" sclass="left-border-solid"/> <!-- -->
+                    <listcell label="@load(s.namaPenerimaKembali)"/> <!-- -->
+                    <listcell label="@load(s.keterangan)" sclass="left-border-solid"/> <!-- -->
+                </listitem>
+            </template>
+            
+            
+            <listfoot>
+                <listfooter span="12" valign="middle">
+               
+                                
+                    <button onClick="@command('')" iconSclass="glyphicon glyphicon-share-alt" label="BUAT SERAH TERIMA"/>
+                    <button onClick="@command('')" iconSclass="glyphicon glyphicon-ok" label="DOKUMEN SUDAH KEMBALI"/>
+                
+                </listfooter>
+            </listfoot>
         </listbox>
+       
     </window>
 
 </zk>

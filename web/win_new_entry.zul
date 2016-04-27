@@ -1,0 +1,90 @@
+<?init class="com.enseval.tukarguling.util.AuthenticationInit"?>
+<zk>   
+    <style>
+        .z-combobox-input{
+        text-transform:uppercase;
+        }
+        
+        input[type="checkbox"], input[type="radio"] {
+        margin : 10px 10px 10px 10px;
+        padding: 5px;
+        box-sizing: border-box;
+        }
+        .z-datebox-input,.z-combobox-input,.z-combobox-button,.z-datebox-button{
+        height:30px;
+        }
+    </style>
+
+    <hbox align="center" pack="center" spacing="20px">
+        <vlayout>
+            <window id="win_new_entry"  
+                    style="border-radius:0px;-webkit-border-radius:0px;-moz-border-radius:0px;" 
+                    mode="modal" 
+                    width="500px" vflex="1" border="normal" 
+                    title="ENTRY TUKAR GULING" 
+                    apply="org.zkoss.bind.BindComposer" 
+                    viewModel="@id('vm') @init('com.enseval.tukarguling.vm.WinNewEntryVM')" 
+                    closable="true">
+                
+                <vbox align="center">
+                    <grid>
+                        <columns>
+                            <column align="right" width="30%"/>
+                            <column/>
+                        </columns>
+                        <rows>
+                            <row>
+                                Nomor TTRB
+                                <textbox id="no_ttrb" hflex="3" value="@bind(vm.p.noTTRB)" sclass="form-control input-primary" maxlength="80"/>
+                            </row>
+                            <row>
+                                Nomor BKB
+                                <textbox id="no_bkb" hflex="3" value="@bind(vm.p.noBKB)" sclass="form-control input-primary" maxlength="80"/>
+                            </row>
+                             <row>
+                                Tgl BKB
+                                <datebox id="tgl_bkb" cols="12" 
+                                         format="dd-MM-yyyy" 
+                                         onCreate="self.value = new Date()" 
+                                         style="height:30px;"
+                                         value="@bind(vm.p.tglBKB)"/>
+
+                            </row> 
+                            <row>
+                                Customer
+                                <hlayout>
+                                    <textbox id="txtCustID" sclass="form-control input-primary" width="90px" placeholder="Cust ID" readonly="true"/>
+                                    <textbox id="txtCustName" sclass="form-control input-primary" hflex="3" placeholder="Nama Customer" readonly="true"/>
+                                    <button id="btnCustID" iconSclass="glyphicon glyphicon-search" sclass="btn-primary"  width="50px" onClick="@command('showCustomerList')"/>
+                                </hlayout>  
+                            </row>
+                            
+                            <row>
+                                Keterangan
+                                <textbox multiline="true" rows="5" hflex="3" value="@bind(vm.p.keterangan)" sclass="form-control input-primary">
+                                                   
+                                </textbox>
+                            </row> 
+                        </rows>
+                        <foot>
+                            <footer span="2" align="left">
+                                                            
+                                <div class="btn-group" style="float:right;">
+                                    <button onClick="@command('')" label="SIMPAN">
+                                        <attribute name="onClick">
+                                            no_ttrb.getValue();
+                                            no_bkb.getValue();
+                                            
+                                        </attribute>
+                                    </button>
+                                    
+                                    <button onClick="win_new_entry.detach()">BATAL</button>
+                                </div>
+                            </footer>
+                        </foot>
+                    </grid>
+                </vbox>
+            </window>
+        </vlayout>
+    </hbox>
+</zk>

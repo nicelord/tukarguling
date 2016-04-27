@@ -3,6 +3,7 @@
 <?link rel="stylesheet" type="text/css" href="css/style.css"?>
     
 <zk>
+    
     <borderlayout apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('com.enseval.tukarguling.vm.NavigationVM')" onBookmarkChange="@command('changePage')">
         <north height="40px" >
             <hlayout vflex="1" valign="middle" sclass="header">
@@ -21,7 +22,7 @@
             </hlayout>
         </north>
         
-        <west title="NAVIGATION" size="15%" maxsize="250" splittable="true" collapsible="true" border="normal" hflex="true">
+        <west title="NAVIGATION" size="15%" maxsize="250" splittable="true" collapsible="true" border="normal" hflex="true" open="false">
             <include src="sidebar.zul"/>
         </west>
         <center border="normal" hflex="true" autoscroll="true" self="@insert(content)">

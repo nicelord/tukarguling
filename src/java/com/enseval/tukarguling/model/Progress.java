@@ -37,17 +37,19 @@ public class Progress implements Serializable {
     
     
     String namaChecker;
-    @Temporal(TemporalType.TIMESTAMP)
-    Timestamp waktuTerimaChecker;
+    @Temporal(TemporalType.DATE)
+    Date tglTerima;
     
     String namaDirExp;
-    @Temporal(TemporalType.TIMESTAMP)
-    Timestamp waktuTerimaDirExp;
+    @Temporal(TemporalType.DATE)
+    Date tglSerah;
 
     
     String namaPenerimaKembali;
-    @Temporal(TemporalType.TIMESTAMP)
-    Timestamp waktuKembali;
+    @Temporal(TemporalType.DATE)
+    Date tglKembali;
+    
+    String keterangan;
 
     public Long getId() {
         return Id;
@@ -97,39 +99,12 @@ public class Progress implements Serializable {
         this.namaOutlet = namaOutlet;
     }
 
-  
-
-    public Timestamp getWaktuTerimaChecker() {
-        return waktuTerimaChecker;
-    }
-
-    public void setWaktuTerimaChecker(Timestamp waktuTerimaChecker) {
-        this.waktuTerimaChecker = waktuTerimaChecker;
-    }
-
     public String getNamaDirExp() {
         return namaDirExp;
     }
 
     public void setNamaDirExp(String namaDirExp) {
         this.namaDirExp = namaDirExp;
-    }
-
-    public Timestamp getWaktuTerimaDirExp() {
-        return waktuTerimaDirExp;
-    }
-
-    public void setWaktuTerimaDirExp(Timestamp waktuTerimaDirExp) {
-        this.waktuTerimaDirExp = waktuTerimaDirExp;
-    }
-
-
-    public Timestamp getWaktuKembali() {
-        return waktuKembali;
-    }
-
-    public void setWaktuKembali(Timestamp waktuKembali) {
-        this.waktuKembali = waktuKembali;
     }
 
     public String getNamaChecker() {
@@ -146,6 +121,38 @@ public class Progress implements Serializable {
 
     public void setNamaPenerimaKembali(String namaPenerimaKembali) {
         this.namaPenerimaKembali = namaPenerimaKembali;
+    }
+
+    public Date getTglTerima() {
+        return tglTerima;
+    }
+
+    public void setTglTerima(Date tglTerima) {
+        this.tglTerima = tglTerima;
+    }
+
+    public Date getTglSerah() {
+        return tglSerah;
+    }
+
+    public void setTglSerah(Date tglSerah) {
+        this.tglSerah = tglSerah;
+    }
+
+    public Date getTglKembali() {
+        return tglKembali;
+    }
+
+    public void setTglKembali(Date tglKembali) {
+        this.tglKembali = tglKembali;
+    }
+
+    public String getKeterangan() {
+        return keterangan;
+    }
+
+    public void setKeterangan(String keterangan) {
+        this.keterangan = keterangan;
     }
 
  

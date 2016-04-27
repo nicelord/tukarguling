@@ -21,9 +21,9 @@ public class TES {
         p.setNoBKB("asdas");
         p.setNoTTRB("asdas");
         p.setTglBKB(new Date());
-        p.setWaktuKembali(new Timestamp(new Date().getTime()));
-        p.setWaktuTerimaChecker(new Timestamp(new Date().getTime()));
-        p.setWaktuTerimaDirExp(new Timestamp(new Date().getTime()));
+//        p.setWaktuKembali(new Timestamp(new Date().getTime()));
+//        p.setWaktuTerimaChecker(new Timestamp(new Date().getTime()));
+//        p.setWaktuTerimaDirExp(new Timestamp(new Date().getTime()));
         Ebean.save(p);
 
     }

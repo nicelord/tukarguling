@@ -23,6 +23,10 @@ and open the template in the editor.
     border-bottom: 1px #a5a5a5 dashed;
 }
 
+.z-listitem .z-listcell.left-border-solid{
+    border-left: 1px #ccc dashed;
+}
+
 
 .mylist-listcell{
 
