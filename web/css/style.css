@@ -14,12 +14,12 @@ and open the template in the editor.
 
 
 .z-listitem.mainList.z-listitem-selected>.z-listcell{
-    background: #37A1A5;
+    background: #40798C;
     border-bottom: 1px #a5a5a5 dashed;
 }
 
 .z-listitem.mainList.z-listitem-selected:hover>.z-listcell{
-    background: #37A1A5;
+    background: #40798C;
     border-bottom: 1px #a5a5a5 dashed;
 }
 

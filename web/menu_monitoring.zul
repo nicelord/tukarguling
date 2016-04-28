@@ -9,6 +9,7 @@
             mold="paging" width="100%" vflex="true" autopaging="true" 
             checkmark="true"
             multiple="true"
+            selectedItems="@bind(vm.selectedProgress)"
             model="@load(vm.listProgress)">    
            
             <auxhead >
@@ -16,25 +17,25 @@
                     <button vflex="3" hflex="3" 
                             sclass="btn-success btn-xs" 
                             iconSclass="glyphicon glyphicon-transfer" 
-                            label="CREATE NEW" 
-                            onClick="@command('win_customer_list')" />
+                            label="ENTRY" 
+                            onClick="@command('showNewEntry')" />
                 </auxheader>
                 <auxheader colspan="10">
                 </auxheader>
             </auxhead>
                 
-            <listhead >
+            <listhead sizable="true">
                 <listheader width="30px"/>
-                <listheader label="NO TTRB"/>
-                <listheader label="NO BKB"/>
-                <listheader label="TGL BKB"/>
-                <listheader label="OUTLET"/>
-                <listheader label="TGL TERIMA"/>
-                <listheader label="CHCEKER"/>
-                <listheader label="TGL SERAH"/>
-                <listheader label="SALES/EXPEDISI"/>
-                <listheader label="TGL KEMBALI"/>
-                <listheader label="CHCEKER"/>
+                <listheader sort="auto(noTTRB)" label="NO TTRB" width="70px"/>
+                <listheader sort="auto(noBKB)" label="NO BKB" width="132px"/>
+                <listheader sort="auto(tglBKB)" label="TGL BKB" width="80px"/>
+                <listheader sort="auto(kodeOutlet)" label="OUTLET" width="220px"/>
+                <listheader sort="auto(tglTerima)" label="TGL TERIMA" width="80px"/>
+                <listheader sort="auto(namaChecker)" label="CHCEKER"/>
+                <listheader sort="auto(tglSerah)" label="TGL SERAH" width="80px"/>
+                <listheader sort="auto(namaDirExp)" label="SALES/EXPEDISI"/>
+                <listheader sort="auto(tglKembali)" label="TGL KEMBALI" width="80px"/>
+                <listheader sort="auto(namaPenerimaKembali)" label="CHCEKER"/>
                 <listheader label="KETERANGAN"/>
             </listhead>
             
@@ -59,6 +60,7 @@
                             <label value="Sampai :" />
                             <datebox id="dtEnd1" format="yyyy-MM-dd" constraint="no future: now or never" readonly="true" hflex="3"/>
                             <div class="btn-group" hflex="3">
+                        
                                 <button label="TAMPILKAN" onClick="@command('')" sclass="btn-info btn-xs" hflex="3" />
                                 <button label="RESET" onClick="@command('')" sclass="btn-default btn-xs" hflex="3" >
                                     <attribute name="onClick">
@@ -66,6 +68,7 @@
                                         endDate.setText("");
                                     </attribute>
                                 </button>
+                                
                             </div>
                         </vlayout>
                     </popup>
@@ -115,6 +118,7 @@
                                     </attribute>
                                 </button>
                             </div>
+                            <button label="TAMPILKAN PENDING" sclass="btn-danger btn-xs" hflex="true"/>
                         </vlayout>
                     </popup>
                 </auxheader> 
@@ -139,6 +143,7 @@
                                     </attribute>
                                 </button>
                             </div>
+                            <button label="TAMPILKAN PENDING" sclass="btn-danger btn-xs" hflex="true"/>
                         </vlayout>
                     </popup>
                 </auxheader> 
@@ -155,13 +160,30 @@
                     <listcell label="@load(s.noTTRB)"/> <!-- -->
                     <listcell label="@load(s.noBKB)"/> <!-- -->
                     <listcell label="@load(s.tglBKB) @converter('formatedDate', format='dd-MM-yyyy')"/> <!-- -->
-                    <listcell label="@load(s.kodeOutlet)"/> <!-- -->
+                    <listcell style="text-overflow: ellipsis; white-space: nowrap;">
+                        <label value="@load(s.kodeOutlet)"/> - <label value="@load(vm.loadNamaOutletById(s.kodeOutlet))"/>
+                    </listcell> <!-- -->
                     <listcell label="@load(s.tglTerima) @converter('formatedDate', format='dd-MM-yyyy')" sclass="left-border-solid" /> <!-- -->
                     <listcell label="@load(s.namaChecker)"/> <!-- -->
-                    <listcell label="@load(s.tglSerah) @converter('formatedDate', format='dd-MM-yyyy')" sclass="left-border-solid"/> <!-- -->
+                    
+                 
+                    <listcell sclass="left-border-solid">
+                        <label value="@load(s.tglSerah) @converter('formatedDate', format='dd-MM-yyyy')"/>
+                        <span class="label label-danger" visible="@load(empty s.tglSerah)">
+                            pending..
+                        </span>
+                    </listcell> <!-- -->
                     <listcell label="@load(s.namaDirExp)"/> <!-- -->
-                    <listcell label="@load(s.tglKembali) @converter('formatedDate', format='dd-MM-yyyy')" sclass="left-border-solid"/> <!-- -->
+                    <listcell sclass="left-border-solid">
+                        <label value="@load(s.tglKembali) @converter('formatedDate', format='dd-MM-yyyy')"/>
+                        <span class="label label-danger" visible="@load(empty s.tglKembali)">
+                            pending..
+                        </span>
+                    </listcell> <!-- -->
+                    
                     <listcell label="@load(s.namaPenerimaKembali)"/> <!-- -->
+                    
+                    
                     <listcell label="@load(s.keterangan)" sclass="left-border-solid"/> <!-- -->
                 </listitem>
             </template>
@@ -171,7 +193,7 @@
                 <listfooter span="12" valign="middle">
                
                                 
-                    <button onClick="@command('')" iconSclass="glyphicon glyphicon-share-alt" label="BUAT SERAH TERIMA"/>
+                    <button onClick="@command('showSerahTerima')" iconSclass="glyphicon glyphicon-share-alt" label="BUAT SERAH TERIMA"/>
                     <button onClick="@command('')" iconSclass="glyphicon glyphicon-ok" label="DOKUMEN SUDAH KEMBALI"/>
                 
                 </listfooter>
