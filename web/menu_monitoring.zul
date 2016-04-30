@@ -16,7 +16,7 @@
                 <auxheader colspan="2">
                     <button vflex="3" hflex="3" 
                             sclass="btn-success btn-xs" 
-                            iconSclass="glyphicon glyphicon-transfer" 
+                            iconSclass="glyphicon glyphicon-file" 
                             label="ENTRY" 
                             onClick="@command('showNewEntry')" />
                 </auxheader>
@@ -113,12 +113,12 @@
                                 <button label="TAMPILKAN" onClick="@command('')" sclass="btn-info btn-xs" hflex="3" />
                                 <button label="RESET" onClick="@command('')" sclass="btn-default btn-xs" hflex="3" >
                                     <attribute name="onClick">
-                                        startDate.setText("");
-                                        endDate.setText("");
+                                        dtStart3.setText("");
+                                        dtEnd3.setText("");
                                     </attribute>
                                 </button>
                             </div>
-                            <button label="TAMPILKAN PENDING" sclass="btn-danger btn-xs" hflex="true"/>
+                            <button label="PENDING" sclass="btn-warning btn-xs" hflex="true"/>
                         </vlayout>
                     </popup>
                 </auxheader> 
@@ -138,12 +138,12 @@
                                 <button label="TAMPILKAN" onClick="@command('')" sclass="btn-info btn-xs" hflex="3" />
                                 <button label="RESET" onClick="@command('')" sclass="btn-default btn-xs" hflex="3" >
                                     <attribute name="onClick">
-                                        startDate.setText("");
-                                        endDate.setText("");
+                                        dtStart4.setText("");
+                                        dtEnd4.setText("");
                                     </attribute>
                                 </button>
                             </div>
-                            <button label="TAMPILKAN PENDING" sclass="btn-danger btn-xs" hflex="true"/>
+                            <button label="PENDING" sclass="btn-warning btn-xs" hflex="true"/>
                         </vlayout>
                     </popup>
                 </auxheader> 
@@ -161,7 +161,7 @@
                     <listcell label="@load(s.noBKB)"/> <!-- -->
                     <listcell label="@load(s.tglBKB) @converter('formatedDate', format='dd-MM-yyyy')"/> <!-- -->
                     <listcell style="text-overflow: ellipsis; white-space: nowrap;">
-                        <label value="@load(s.kodeOutlet)"/> - <label value="@load(vm.loadNamaOutletById(s.kodeOutlet))"/>
+                        <label value="@load(s.customer.id)"/> - <label value="@load(s.customer.nama)"/>
                     </listcell> <!-- -->
                     <listcell label="@load(s.tglTerima) @converter('formatedDate', format='dd-MM-yyyy')" sclass="left-border-solid" /> <!-- -->
                     <listcell label="@load(s.namaChecker)"/> <!-- -->
@@ -169,14 +169,14 @@
                  
                     <listcell sclass="left-border-solid">
                         <label value="@load(s.tglSerah) @converter('formatedDate', format='dd-MM-yyyy')"/>
-                        <span class="label label-danger" visible="@load(empty s.tglSerah)">
+                        <span class="label label-warning" visible="@load(empty s.tglSerah)">
                             pending..
                         </span>
                     </listcell> <!-- -->
                     <listcell label="@load(s.namaDirExp)"/> <!-- -->
                     <listcell sclass="left-border-solid">
                         <label value="@load(s.tglKembali) @converter('formatedDate', format='dd-MM-yyyy')"/>
-                        <span class="label label-danger" visible="@load(empty s.tglKembali)">
+                        <span class="label label-warning" visible="@load(empty s.tglKembali)">
                             pending..
                         </span>
                     </listcell> <!-- -->

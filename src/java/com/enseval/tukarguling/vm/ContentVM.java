@@ -12,7 +12,7 @@ public class ContentVM
     String thePage;
     
     public ContentVM() {
-        this.thePage = "/menuSetoran.zul";
+        this.thePage = "/menu_monitoring.zul";
     }
     
     @AfterCompose

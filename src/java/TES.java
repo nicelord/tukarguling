@@ -13,7 +13,6 @@ public class TES {
         AgentLoader.loadAgentFromClasspath("avaje-ebeanorm-agent", "debug=1");
 
         Progress p = new Progress();
-        p.setKodeOutlet(12312L);
         p.setNamaChecker("SCASD");
         p.setNamaDirExp("asdas");
         p.setNamaOutlet("asdas");

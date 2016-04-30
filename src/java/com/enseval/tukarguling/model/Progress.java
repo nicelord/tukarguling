@@ -30,7 +30,9 @@ public class Progress implements Serializable {
     String noBKB = "";
     @Temporal(TemporalType.DATE)
     Date tglBKB = new Date(); 
-    Long kodeOutlet;
+    
+    @ManyToOne
+    Customer customer;
     @Transient
     String namaOutlet = "";
     
@@ -83,13 +85,15 @@ public class Progress implements Serializable {
         this.tglBKB = tglBKB;
     }
 
-    public Long getKodeOutlet() {
-        return kodeOutlet;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setKodeOutlet(Long kodeOutlet) {
-        this.kodeOutlet = kodeOutlet;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
+
+ 
 
     public String getNamaOutlet() {
         return namaOutlet;

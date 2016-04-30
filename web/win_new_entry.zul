@@ -70,11 +70,13 @@
                                              width="90px" 
                                              placeholder="Cust ID" 
                                              readonly="true"
+                                             value="@bind(vm.customer.id)"
                                              constraint="no empty"/>
                                     <textbox id="txt_cust_name" 
                                              sclass="form-control input-primary" 
                                              hflex="3" placeholder="Nama Customer" 
                                              readonly="true"
+                                             value="@bind(vm.customer.nama)"
                                              constraint="no empty"/>
                                     <button id="btn_cust" 
                                             iconSclass="glyphicon glyphicon-search" 

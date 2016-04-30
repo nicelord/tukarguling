@@ -20,6 +20,7 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.bind.annotation.GlobalCommand;
+import org.zkoss.bind.annotation.NotifyChange;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.select.Selectors;
@@ -37,6 +38,8 @@ public class WinNewEntryVM {
     User user = new AuthenticationServiceImpl().getUserCredential().getUser();
 
     Progress p = new Progress();
+    
+    Customer customer;
 
     @Wire("#txt_cust_id")
     private Textbox txtCustID;
@@ -57,15 +60,15 @@ public class WinNewEntryVM {
     }
 
     @GlobalCommand
+    @NotifyChange({"customer"})
     public void setCustomer(@BindingParam("customer") Customer customer) {
-        txtCustID.setValue(customer.getId().toString());
-        txtCustName.setValue(customer.getNama());
+        this.customer = customer;
 
     }
 
     @Command
     public void insertNewEntry() {
-        p.setKodeOutlet(Long.valueOf(txtCustID.getValue()));
+        p.setCustomer(customer);
         p.setTglTerima(new Date());
         p.setNamaChecker(this.user.getNama());
         Ebean.save(p);
@@ -105,6 +108,18 @@ public class WinNewEntryVM {
 
     public void setWinNewEntry(Window winNewEntry) {
         this.winNewEntry = winNewEntry;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Customer getCustomer() {
+        return customer;
     }
 
 }

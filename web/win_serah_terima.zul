@@ -37,9 +37,9 @@
                      model="@load(vm.selectedProgress)">        
                                                 
                 <listhead sizable="true" visible="true" >
-                    <listheader sort="auto(noTTRB)" label="NO TTRB" />
+                    <listheader sort="auto(noTTRB)" label="NO TTRB" width="90px" />
                     <listheader sort="auto(noBKB)" label="NO BKB" width="130px" />
-                    <listheader sort="auto(kodeOutlet)" label="OUTLET" />
+                    <listheader sort="auto(customer.nama)" label="OUTLET" />
                 </listhead>
                         
                 
@@ -47,14 +47,11 @@
                     <listitem sclass="mainList">
                         <listcell label="@load(s.noTTRB)"/>
                         <listcell label="@load(s.noBKB)"/>
-                        <listcell label="@load(s.kodeOutlet)"/>
+                        <listcell label="@load(s.customer.nama)"/>
                         
                     </listitem>
                 </template>
-                    
-                <listfoot>
-               
-                </listfoot>		
+          		
             </listbox>
             <separator bar="true" spacing="20px"/>
             <grid>
