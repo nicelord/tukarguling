@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2016-04-28 01:26:44
+Date: 2016-04-30 19:24:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `cetak` (
   PRIMARY KEY (`id`),
   KEY `ix_cetak_ttssnya_1` (`ttssnya_nomor`),
   KEY `ix_cetak_userLogin_2` (`user_login_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3342 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of cetak
@@ -1445,7 +1445,7 @@ CREATE TABLE `progress` (
   `no_ttrb` varchar(255) DEFAULT NULL,
   `no_bkb` varchar(255) DEFAULT NULL,
   `tgl_bkb` varchar(255) DEFAULT NULL,
-  `kode_outlet` bigint(20) DEFAULT NULL,
+  `customer_id` bigint(20) DEFAULT NULL,
   `nama_checker` varchar(255) DEFAULT NULL,
   `tgl_terima` date DEFAULT NULL,
   `nama_dir_exp` varchar(255) DEFAULT NULL,
@@ -1453,13 +1453,22 @@ CREATE TABLE `progress` (
   `nama_penerima_kembali` varchar(255) DEFAULT NULL,
   `tgl_kembali` date DEFAULT NULL,
   `keterangan` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  KEY `cst` (`customer_id`),
+  CONSTRAINT `cst` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of progress
 -- ----------------------------
-INSERT INTO `progress` VALUES ('1', 'asdas', 'asdas', '2016-04-27 17:12:15', '12312', 'SCASD', '2016-04-27', 'asdas', '2016-04-27', 'asdas', '2016-04-27', 'oke');
+INSERT INTO `progress` VALUES ('1', '88888', 'PTK-16-2685651353', '2016-04-27 17:12:15', '387558', 'SCASD', '2016-04-27', 'asdas', '2016-04-27', 'asdas', '2016-04-27', 'oke');
+INSERT INTO `progress` VALUES ('3', '88888', 'PTK-16-2685651353', '2016-04-28 08:58:34', '387580', 'admin', '2016-04-28', null, null, null, null, 'adsdasda');
+INSERT INTO `progress` VALUES ('4', '88888', 'PTK-16-2685651353', '2016-04-28 09:04:42', '387580', 'admin', '2016-04-28', null, null, null, null, null);
+INSERT INTO `progress` VALUES ('5', '88888', 'PTK-16-2685651353', '2016-04-28 09:10:27', '387575', 'admin', '2016-04-28', null, null, null, null, 'asdasd');
+INSERT INTO `progress` VALUES ('6', '123', '123', '2016-04-30 14:59:41', '387617', 'admin', '2016-04-30', null, null, null, null, null);
+INSERT INTO `progress` VALUES ('7', '231231231', '2121212', '2016-04-30 15:04:46', '387619', 'admin', '2016-04-30', null, null, null, null, null);
+INSERT INTO `progress` VALUES ('8', '5645645644456', '564564564564646', '2016-04-30 15:09:09', '387805', 'admin', '2016-04-30', null, null, null, null, null);
+INSERT INTO `progress` VALUES ('9', '222222', '2222222', '2016-04-30 15:40:44', '387571', 'admin', '2016-04-30', null, null, null, null, 'asdasd');
 
 -- ----------------------------
 -- Table structure for setting
@@ -1499,7 +1508,7 @@ CREATE TABLE `user` (
   `password` varchar(255) DEFAULT NULL,
   `akses` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of user
