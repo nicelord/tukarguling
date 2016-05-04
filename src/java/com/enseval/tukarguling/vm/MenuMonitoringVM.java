@@ -45,16 +45,25 @@ public class MenuMonitoringVM {
     }
 
     @Command
+    public void showEdit(@BindingParam("p")Progress p,
+            @BindingParam("e")boolean e) {
+        Map m = new HashMap();
+        m.put("selected_progress", p);
+        m.put("editable",e);
+        Executions.createComponents("win_edit.zul", null, m);
+    }
+    
+    @Command
     public void showSerahTerima() {
 
-        Iterator<Progress> ite = selectedProgress.iterator();
-
-        while (ite.hasNext()) {
-            Progress value = ite.next();
-            if (value.getTglSerah() != null) {
-                ite.remove();
-            }
-        }
+//        Iterator<Progress> ite = selectedProgress.iterator();
+//
+//        while (ite.hasNext()) {
+//            Progress value = ite.next();
+//            if (value.getTglSerah() != null) {
+//                ite.remove();
+//            }
+//        }
         Map m = new HashMap();
         m.put("selected_progress", selectedProgress);
         Executions.createComponents("win_serah_terima.zul", null, m);

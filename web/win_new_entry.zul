@@ -87,10 +87,9 @@
                             </row>
                             
                             <row>
-                                Keterangan
-                                <textbox multiline="true" 
-                                         rows="5" hflex="3" 
-                                         value="@bind(vm.p.keterangan)" 
+                                Remark
+                                <textbox hflex="3" 
+                                         value="@bind(vm.p.remarkTerima)" 
                                          sclass="form-control input-primary">
                                                    
                                 </textbox>

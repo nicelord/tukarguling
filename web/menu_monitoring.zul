@@ -29,14 +29,14 @@
                 <listheader sort="auto(noTTRB)" label="NO TTRB" width="70px"/>
                 <listheader sort="auto(noBKB)" label="NO BKB" width="132px"/>
                 <listheader sort="auto(tglBKB)" label="TGL BKB" width="80px"/>
-                <listheader sort="auto(kodeOutlet)" label="OUTLET" width="220px"/>
+                <listheader sort="auto(kodeOutlet)" label="OUTLET" width="300px"/>
                 <listheader sort="auto(tglTerima)" label="TGL TERIMA" width="80px"/>
                 <listheader sort="auto(namaChecker)" label="CHCEKER"/>
                 <listheader sort="auto(tglSerah)" label="TGL SERAH" width="80px"/>
                 <listheader sort="auto(namaDirExp)" label="SALES/EXPEDISI"/>
                 <listheader sort="auto(tglKembali)" label="TGL KEMBALI" width="80px"/>
                 <listheader sort="auto(namaPenerimaKembali)" label="CHCEKER"/>
-                <listheader label="KETERANGAN"/>
+                <listheader width="85px"/>
             </listhead>
             
             
@@ -150,9 +150,7 @@
                 <auxheader>
                     <textbox instant="true" value="" hflex="3" onChange="@command('')"/>
                 </auxheader> 
-                <auxheader>
-                    <textbox instant="true" value="" hflex="3" onChange="@command('')"/>
-                </auxheader> 
+                <auxheader/>
             </auxhead>
             <template name="model" var="s">
                 <listitem sclass="mainList">
@@ -184,7 +182,22 @@
                     <listcell label="@load(s.namaPenerimaKembali)"/> <!-- -->
                     
                     
-                    <listcell label="@load(s.keterangan)" sclass="left-border-solid"/> <!-- -->
+                    <listcell>
+                        <div class="btn-group" style="float:center;">
+                            <button onClick="@command('showEdit',p=s, e=false)" 
+                                    sclass="btn-primary btn-xs" 
+                                    iconSclass="glyphicon glyphicon-eye-open"/>
+                            <button onClick="@command('showEdit',p=s,e=true)" 
+                                    sclass="btn-success btn-xs" 
+                                    iconSclass="glyphicon glyphicon-edit"
+                                    disabled="@load(s.tglSerah ne null)"/>
+                            <button onClick="@command('')" 
+                                    sclass="btn-danger btn-xs" 
+                                    iconSclass="glyphicon glyphicon-trash"
+                                    disabled="@load(s.tglSerah ne null)"/>
+                            
+                        </div>
+                    </listcell>
                 </listitem>
             </template>
             

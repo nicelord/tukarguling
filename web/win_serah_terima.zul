@@ -1,7 +1,7 @@
 <?init class="com.enseval.tukarguling.util.AuthenticationInit"?>
 <zk>   
     <style>
-          .z-combobox-input{
+        .z-combobox-input{
         text-transform:uppercase;
         }
         
@@ -10,7 +10,7 @@
         padding: 5px;
         box-sizing: border-box;
         }
-         .z-datebox-input,.z-combobox-input,.z-combobox-button,.z-datebox-button{
+        .z-datebox-input,.z-combobox-input,.z-combobox-button,.z-datebox-button{
         height:30px;
         }
        
@@ -22,7 +22,7 @@
                 style="border-radius:0px;-webkit-border-radius:0px;-moz-border-radius:0px;"
                 position="center,top" 
                 mode="modal" 
-                width="500px" 
+                width="600px" 
                 vflex="1" 
                 title="CETAK SERAH TERIMA" 
                 border="normal" 
@@ -39,7 +39,8 @@
                 <listhead sizable="true" visible="true" >
                     <listheader sort="auto(noTTRB)" label="NO TTRB" width="90px" />
                     <listheader sort="auto(noBKB)" label="NO BKB" width="130px" />
-                    <listheader sort="auto(customer.nama)" label="OUTLET" />
+                    <listheader sort="auto(customer.nama)" width="130px" label="OUTLET" />
+                    <listheader label="REMARK" />
                 </listhead>
                         
                 
@@ -47,8 +48,12 @@
                     <listitem sclass="mainList">
                         <listcell label="@load(s.noTTRB)"/>
                         <listcell label="@load(s.noBKB)"/>
-                        <listcell label="@load(s.customer.nama)"/>
-                        
+                        <listcell label="@load(s.customer.nama)" style="text-overflow: ellipsis; white-space: nowrap;"/>
+                        <listcell>
+                            <textbox inplace="true"
+                                     width="100%"
+                                     value="@bind(s.remarkSerah)"/>
+                        </listcell>
                     </listitem>
                 </template>
           		
@@ -84,7 +89,7 @@
                         Printer : 
                         <combobox id="cmb_printer"  value="" hflex="3" vflex="3" readonly="true" constraint="no empty" style="padding-right: 25px">
                             
-                                <comboitem label="PRINTER" />
+                            <comboitem label="PRINTER" />
                          
                         </combobox>                       
                         <div class="btn-group" style="float:right;">

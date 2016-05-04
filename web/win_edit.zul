@@ -1,0 +1,191 @@
+<?init class="com.enseval.tukarguling.util.AuthenticationInit"?>
+<zk>   
+    <style>
+        .z-combobox-input{
+        text-transform:uppercase;
+        }
+        
+        input[type="checkbox"], input[type="radio"] {
+        margin : 10px 10px 10px 10px;
+        padding: 5px;
+        box-sizing: border-box;
+        }
+        .z-datebox-input,.z-combobox-input,.z-combobox-button,.z-datebox-button{
+        height:30px;
+        }
+    </style>
+
+    <hbox align="center" pack="center" spacing="20px">
+        <vlayout>
+            <window id="win_new_entry"  
+                    style="border-radius:0px;-webkit-border-radius:0px;-moz-border-radius:0px;" 
+                    mode="modal" 
+                    width="600px" vflex="1" border="normal" 
+                    title="EDIT TUKAR GULING" 
+                    apply="org.zkoss.bind.BindComposer" 
+                    viewModel="@id('vm') @init('com.enseval.tukarguling.vm.WinEditVM')" 
+                    closable="true">
+                
+                <vbox align="center">
+                    <grid>
+                        <columns>
+                            <column align="right" width="30%"/>
+                            <column/>
+                        </columns>
+                        <rows>
+                            <row>
+                                Nomor TTRB
+                                <textbox id="no_ttrb" 
+                                         hflex="3" 
+                                         value="@bind(vm.p.noTTRB)" 
+                                         sclass="form-control input-primary" 
+                                         maxlength="80"
+                                         constraint="no empty"
+                                         readonly="@load(!vm.editable)"/>
+                            </row>
+                            <row>
+                                Nomor BKB
+                                <textbox id="no_bkb" 
+                                         hflex="3" 
+                                         value="@bind(vm.p.noBKB)" 
+                                         sclass="form-control input-primary" 
+                                         maxlength="80"
+                                         readonly="@load(!vm.editable)"
+                                         constraint="no empty"/>
+                            </row>
+                            <row>
+                                Tgl BKB
+                                <datebox id="tgl_bkb" cols="12" 
+                                         format="dd-MM-yyyy" 
+                                         
+                                         style="height:30px;"
+                                         readonly="true"
+                                         value="@bind(vm.p.tglBKB)"
+                                         buttonVisible="@load(vm.editable)"
+                                         constraint="no empty"/>
+
+                            </row> 
+                            <row>
+                                Customer
+                                <hlayout>
+                                    <textbox id="txt_cust_id" 
+                                             sclass="form-control input-primary" 
+                                             width="90px" 
+                                             placeholder="Cust ID" 
+                                             readonly="true"
+                                             value="@bind(vm.p.customer.id)"
+                                             constraint="no empty"/>
+                                    <textbox id="txt_cust_name" 
+                                             sclass="form-control input-primary" 
+                                             hflex="3" placeholder="Nama Customer" 
+                                             readonly="true"
+                                             value="@bind(vm.p.customer.nama)"
+                                             constraint="no empty"/>
+                                    <button id="btn_cust" 
+                                            iconSclass="glyphicon glyphicon-search" 
+                                            sclass="btn-primary"  
+                                            width="50px" 
+                                            disabled="@load(!vm.editable)"
+                                            onClick="@command('showCustomerList')"/>
+                                </hlayout>  
+                            </row>
+                            
+                        </rows>
+                        
+                    </grid>
+                    <separator bar="true" spacing="20px"/>
+                    <grid>
+                        <auxhead>
+                            <auxheader colspan="3" label="Detail Entry"/>
+                        </auxhead>
+                        <columns>
+                            <column label="Tgl" width="90px"/>
+                            <column label="User" width="100px"/>
+                            <column label="Remarks"/>
+                        </columns>
+                        <rows>
+                            <row visible="@load(vm.editable)">
+                                <label value="@bind(vm.p.tglTerima) @converter('formatedDate', format='dd-MM-yyyy')"/>
+                                <label value="@bind(vm.p.namaChecker)"/>
+                                <textbox inplace="true"
+                                         width="100%"
+                                         value="@bind(vm.p.remarkTerima)"/>
+                            </row>
+                            <row visible="@load(!vm.editable)">
+                                <label value="@bind(vm.p.tglTerima) @converter('formatedDate', format='dd-MM-yyyy')"/>
+                                <label value="@bind(vm.p.namaChecker)"/>
+                                <label value="@bind(vm.p.remarkTerima)" style="text-overflow: ellipsis; white-space: nowrap;"/>
+                            </row>
+                        </rows>
+                    </grid>
+                    
+                    <grid>
+                        <auxhead>
+                            <auxheader colspan="5" label="Detail Serah Terima"/>
+                        </auxhead>
+                        <columns>
+                            <column label="Tgl" width="90px"/>
+                            <column label="User" width="100px"/>
+                            <column label="Penerima" width="100px"/>
+                            <column label="Divisi" width="60px"/> 
+                            <column label="Remarks"/>
+                        </columns>
+                        <rows>
+                            <row visible="@load(!empty vm.p.tglSerah)">
+                                <label value="@bind(vm.p.tglSerah) @converter('formatedDate', format='dd-MM-yyyy')"/>
+                                <label value="@bind(vm.p.namaUserSerah)"/>
+                                <label value="@bind(vm.p.namaDirExp)"/>
+                                <label value="@bind(vm.p.divisi)"/>
+                                <label value="@bind(vm.p.remarkSerah)"/>
+                            </row>
+                            <row visible="@load(empty vm.p.tglSerah)">
+                                <cell colspan="5"  align="center">
+                                    <span class="label label-warning" >
+                                        pending..
+                                    </span>
+                                </cell>
+                            </row>
+                        </rows>
+                    </grid>
+                    
+                    <grid>
+                        <auxhead>
+                            <auxheader colspan="3" label="Detail Dokumen Kembali"/>
+                        </auxhead>
+                        <columns>
+                            <column label="Tgl" width="90px"/>
+                            <column label="User" width="100px"/>
+                            <column label="Remarks"/>
+                        </columns>
+                        <rows>
+                            <row visible="@load(!empty vm.p.tglKembali)">
+                                <label value="@bind(vm.p.tglKembali) @converter('formatedDate', format='dd-MM-yyyy')"/>
+                                <label value="@bind(vm.p.namaPenerimaKembali)"/>
+                                <label value="@bind(vm.p.remarkKembali)"/>
+                            </row>
+                            <row visible="@load(empty vm.p.tglKembali)">
+                                <cell colspan="5"  align="center">
+                                    <span class="label label-warning" >
+                                        pending..
+                                    </span>
+                                </cell>
+                            </row>
+                        </rows>
+                    </grid>
+                    <div class="btn-group" style="float:right;" visible="@load(vm.editable)">
+                        <button onClick="@command('updateEntry')" label="SIMPAN">
+                            <attribute name="onClick">
+                                no_ttrb.getValue();
+                                no_bkb.getValue();
+                                txt_cust_id.getValue();
+                                txt_cust_name.getValue();
+                            </attribute>
+                        </button>
+                                    
+                        <button onClick="win_new_entry.detach()">BATAL</button>
+                    </div>
+                </vbox>
+            </window>
+        </vlayout>
+    </hbox>
+</zk>

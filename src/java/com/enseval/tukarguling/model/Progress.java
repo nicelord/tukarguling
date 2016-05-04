@@ -41,17 +41,22 @@ public class Progress implements Serializable {
     String namaChecker;
     @Temporal(TemporalType.DATE)
     Date tglTerima;
+    String remarkTerima="";
     
     String namaDirExp;
+    String divisi;
+    String namaUserSerah;
     @Temporal(TemporalType.DATE)
     Date tglSerah;
+    String remarkSerah="";
 
     
     String namaPenerimaKembali;
     @Temporal(TemporalType.DATE)
     Date tglKembali;
+    String remarkKembali="";
     
-    String keterangan;
+
 
     public Long getId() {
         return Id;
@@ -151,12 +156,45 @@ public class Progress implements Serializable {
         this.tglKembali = tglKembali;
     }
 
-    public String getKeterangan() {
-        return keterangan;
+
+    public String getRemarkTerima() {
+        return remarkTerima;
     }
 
-    public void setKeterangan(String keterangan) {
-        this.keterangan = keterangan;
+    public void setRemarkTerima(String remarkTerima) {
+        this.remarkTerima = remarkTerima;
+    }
+
+    public String getRemarkSerah() {
+        return remarkSerah;
+    }
+
+    public void setRemarkSerah(String remarkSerah) {
+        this.remarkSerah = remarkSerah;
+    }
+
+    public String getRemarkKembali() {
+        return remarkKembali;
+    }
+
+    public void setRemarkKembali(String remarkKembali) {
+        this.remarkKembali = remarkKembali;
+    }
+
+    public String getDivisi() {
+        return divisi;
+    }
+
+    public void setDivisi(String divisi) {
+        this.divisi = divisi;
+    }
+
+    public String getNamaUserSerah() {
+        return namaUserSerah;
+    }
+
+    public void setNamaUserSerah(String namaUserSerah) {
+        this.namaUserSerah = namaUserSerah;
     }
 
  
