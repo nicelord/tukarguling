@@ -29,7 +29,7 @@
                 <listheader sort="auto(noTTRB)" label="NO TTRB" width="70px"/>
                 <listheader sort="auto(noBKB)" label="NO BKB" width="132px"/>
                 <listheader sort="auto(tglBKB)" label="TGL BKB" width="80px"/>
-                <listheader sort="auto(kodeOutlet)" label="OUTLET" width="300px"/>
+                <listheader label="OUTLET" width="300px"/>
                 <listheader sort="auto(tglTerima)" label="TGL TERIMA" width="80px"/>
                 <listheader sort="auto(namaChecker)" label="CHCEKER"/>
                 <listheader sort="auto(tglSerah)" label="TGL SERAH" width="80px"/>
@@ -45,10 +45,10 @@
                     <image id="" src="img/filter.png" width=""  height=""/>
                 </auxheader>
                 <auxheader>
-                    <textbox instant="true" value="" hflex="3" onChange="@command('')"/>
+                    <textbox instant="true" hflex="3" onChange="@command('updateFilter')" value="@bind(vm.filterNoTTRB)"/>
                 </auxheader>       
                 <auxheader>
-                    <textbox instant="true" value="" hflex="3" onChange="@command('')"/>
+                    <textbox instant="true" hflex="3" onChange="@command('updateFilter')" value="@bind(vm.filterNoBKB)"/>
                 </auxheader> 
                 <auxheader>
                     <button popup="popDt1" iconSclass="glyphicon glyphicon-filter" label="FILTER" onClick="" sclass="btn-info btn-xs" hflex="3" />
@@ -56,16 +56,16 @@
                     <popup id="popDt1" width="200px" style="word-wrap">
                         <vlayout>
                             <label value="Dari :" />
-                            <datebox id="dtStart1" format="yyyy-MM-dd" readonly="true" hflex="3"/>
+                            <datebox id="dtStart1" format="yyyy-MM-dd" readonly="true" hflex="3" value="@bind(vm.filterTglBKB1)"/>
                             <label value="Sampai :" />
-                            <datebox id="dtEnd1" format="yyyy-MM-dd" constraint="no future: now or never" readonly="true" hflex="3"/>
+                            <datebox id="dtEnd1" format="yyyy-MM-dd" constraint="no future: now or never" readonly="true" hflex="3" value="@bind(vm.filterTglBKB2)"/>
                             <div class="btn-group" hflex="3">
                         
-                                <button label="TAMPILKAN" onClick="@command('')" sclass="btn-info btn-xs" hflex="3" />
-                                <button label="RESET" onClick="@command('')" sclass="btn-default btn-xs" hflex="3" >
+                                <button label="TAMPILKAN" onClick="@command('updateFilter')" sclass="btn-info btn-xs" hflex="3" />
+                                <button label="RESET" onClick="@command('resetFilterTglBKB')" sclass="btn-default btn-xs" hflex="3" >
                                     <attribute name="onClick">
-                                        startDate.setText("");
-                                        endDate.setText("");
+                                        dtStart1.setText("");
+                                        dtEnd1.setText("");
                                     </attribute>
                                 </button>
                                 
@@ -74,7 +74,7 @@
                     </popup>
                 </auxheader> 
                 <auxheader>
-                    <textbox instant="true" value="" hflex="3" onChange="@command('')"/>
+                    <textbox instant="true" hflex="3" onChange="@command('updateFilter')" value="@bind(vm.filterOutlet)"/>
                 </auxheader> 
                 <auxheader>
                     <button popup="popDt2" iconSclass="glyphicon glyphicon-filter" label="FILTER" onClick="" sclass="btn-info btn-xs" hflex="3" />
@@ -82,15 +82,15 @@
                     <popup id="popDt2" width="200px" style="word-wrap">
                         <vlayout>
                             <label value="Dari :" />
-                            <datebox id="dtStart2" format="yyyy-MM-dd" readonly="true" hflex="3"/>
+                            <datebox id="dtStart2" format="yyyy-MM-dd" readonly="true" hflex="3" value="@bind(vm.filterTglTerima1)"/>
                             <label value="Sampai :" />
-                            <datebox id="dtEnd2" format="yyyy-MM-dd" constraint="no future: now or never" readonly="true" hflex="3"/>
+                            <datebox id="dtEnd2" format="yyyy-MM-dd" constraint="no future: now or never" readonly="true" hflex="3" value="@bind(vm.filterTglTerima2)"/>
                             <div class="btn-group" hflex="3">
-                                <button label="TAMPILKAN" onClick="@command('')" sclass="btn-info btn-xs" hflex="3" />
-                                <button label="RESET" onClick="@command('')" sclass="btn-default btn-xs" hflex="3" >
+                                <button label="TAMPILKAN" onClick="@command('updateFilter')" sclass="btn-info btn-xs" hflex="3" />
+                                <button label="RESET" onClick="@command('resetFilterTglTerima')" sclass="btn-default btn-xs" hflex="3" >
                                     <attribute name="onClick">
-                                        startDate.setText("");
-                                        endDate.setText("");
+                                        dtStart2.setText("");
+                                        dtEnd2.setText("");
                                     </attribute>
                                 </button>
                             </div>
@@ -98,7 +98,7 @@
                     </popup>
                 </auxheader> 
                 <auxheader>
-                    <textbox instant="true" value="" hflex="3" onChange="@command('')"/>
+                    <textbox instant="true" hflex="3" onChange="@command('updateFilter')" value="@bind(vm.filterChecker)"/>
                 </auxheader> 
                 <auxheader>
                     <button popup="popDt3" iconSclass="glyphicon glyphicon-filter" label="FILTER" onClick="" sclass="btn-info btn-xs" hflex="3" />
@@ -106,24 +106,23 @@
                     <popup id="popDt3" width="200px" style="word-wrap">
                         <vlayout>
                             <label value="Dari :" />
-                            <datebox id="dtStart3" format="yyyy-MM-dd" readonly="true" hflex="3"/>
+                            <datebox id="dtStart3" format="yyyy-MM-dd" readonly="true" hflex="3" value="@bind(vm.filterTglSerah1)"/>
                             <label value="Sampai :" />
-                            <datebox id="dtEnd3" format="yyyy-MM-dd" constraint="no future: now or never" readonly="true" hflex="3"/>
+                            <datebox id="dtEnd3" format="yyyy-MM-dd" constraint="no future: now or never" readonly="true" hflex="3" value="@bind(vm.filterTglSerah2)"/>
                             <div class="btn-group" hflex="3">
-                                <button label="TAMPILKAN" onClick="@command('')" sclass="btn-info btn-xs" hflex="3" />
-                                <button label="RESET" onClick="@command('')" sclass="btn-default btn-xs" hflex="3" >
+                                <button label="TAMPILKAN" onClick="@command('updateFilter')" sclass="btn-info btn-xs" hflex="3" />
+                                <button label="RESET" onClick="@command('resetFilterTglSerah')" sclass="btn-default btn-xs" hflex="3" >
                                     <attribute name="onClick">
                                         dtStart3.setText("");
                                         dtEnd3.setText("");
                                     </attribute>
                                 </button>
                             </div>
-                            <button label="PENDING" sclass="btn-warning btn-xs" hflex="true"/>
                         </vlayout>
                     </popup>
                 </auxheader> 
                 <auxheader>
-                    <textbox instant="true" value="" hflex="3" onChange="@command('')"/>
+                    <textbox instant="true" hflex="3" onChange="@command('updateFilter')" value="@bind(vm.filterSlsExp)"/>
                 </auxheader> 
                 <auxheader>
                     <button popup="popDt4" iconSclass="glyphicon glyphicon-filter" label="FILTER" onClick="" sclass="btn-info btn-xs" hflex="3" />
@@ -131,26 +130,27 @@
                     <popup id="popDt4" width="200px" style="word-wrap">
                         <vlayout>
                             <label value="Dari :" />
-                            <datebox id="dtStart4" format="yyyy-MM-dd" readonly="true" hflex="3"/>
+                            <datebox id="dtStart4" format="yyyy-MM-dd" readonly="true" hflex="3" value="@bind(vm.filterTglKembali1)"/>
                             <label value="Sampai :" />
-                            <datebox id="dtEnd4" format="yyyy-MM-dd" constraint="no future: now or never" readonly="true" hflex="3"/>
+                            <datebox id="dtEnd4" format="yyyy-MM-dd" constraint="no future: now or never" readonly="true" hflex="3" value="@bind(vm.filterTglKembali2)"/>
                             <div class="btn-group" hflex="3">
-                                <button label="TAMPILKAN" onClick="@command('')" sclass="btn-info btn-xs" hflex="3" />
-                                <button label="RESET" onClick="@command('')" sclass="btn-default btn-xs" hflex="3" >
+                                <button label="TAMPILKAN" onClick="@command('updateFilter')" sclass="btn-info btn-xs" hflex="3" />
+                                <button label="RESET" onClick="@command('resetFilterTglKembali')" sclass="btn-default btn-xs" hflex="3" >
                                     <attribute name="onClick">
                                         dtStart4.setText("");
                                         dtEnd4.setText("");
                                     </attribute>
                                 </button>
                             </div>
-                            <button label="PENDING" sclass="btn-warning btn-xs" hflex="true"/>
                         </vlayout>
                     </popup>
                 </auxheader> 
                 <auxheader>
-                    <textbox instant="true" value="" hflex="3" onChange="@command('')"/>
+                    <textbox instant="true" hflex="3" onChange="@command('updateFilter')" value="@bind(vm.filterPenerima)"/>
                 </auxheader> 
-                <auxheader/>
+                <auxheader>
+                    <button hflex="3" onClick="@command('refresh')" sclass="btn-info btn-xs" iconSclass="glyphicon glyphicon-refresh" label="RESET"/>
+                </auxheader>
             </auxhead>
             <template name="model" var="s">
                 <listitem sclass="mainList">
@@ -191,7 +191,7 @@
                                     sclass="btn-success btn-xs" 
                                     iconSclass="glyphicon glyphicon-edit"
                                     disabled="@load(s.tglSerah ne null)"/>
-                            <button onClick="@command('')" 
+                            <button onClick="@command('hapus',p=s)" 
                                     sclass="btn-danger btn-xs" 
                                     iconSclass="glyphicon glyphicon-trash"
                                     disabled="@load(s.tglSerah ne null)"/>
@@ -206,8 +206,8 @@
                 <listfooter span="12" valign="middle">
                
                                 
-                    <button onClick="@command('showSerahTerima')" iconSclass="glyphicon glyphicon-share-alt" label="BUAT SERAH TERIMA"/>
-                    <button onClick="@command('')" iconSclass="glyphicon glyphicon-ok" label="DOKUMEN SUDAH KEMBALI"/>
+                    <button onClick="@command('showSerahTerima')" sclass="btn-primary" iconSclass="glyphicon glyphicon-transfer" label="BUAT SERAH TERIMA"/>
+                    <button onClick="@command('showDokKembali')" sclass="btn-primary" iconSclass="glyphicon glyphicon-ok" label="DOKUMEN SUDAH KEMBALI"/>
                 
                 </listfooter>
             </listfoot>

@@ -173,7 +173,7 @@
                         </rows>
                     </grid>
                     <div class="btn-group" style="float:right;" visible="@load(vm.editable)">
-                        <button onClick="@command('updateEntry')" label="SIMPAN">
+                        <button onClick="@command('updateEntry')" label="UPDATE">
                             <attribute name="onClick">
                                 no_ttrb.getValue();
                                 no_bkb.getValue();

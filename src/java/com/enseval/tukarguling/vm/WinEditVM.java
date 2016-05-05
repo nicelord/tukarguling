@@ -58,7 +58,6 @@ public class WinEditVM {
             @ExecutionArgParam("editable") boolean e) {
         this.p = p;
         this.editable = e;
-        System.out.println(this.editable);
         Selectors.wireComponents(view, this, false);
     }
 

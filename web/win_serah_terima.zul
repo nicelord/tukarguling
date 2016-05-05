@@ -31,7 +31,7 @@
                 viewModel="@id('vm') @init('com.enseval.tukarguling.vm.WinSerahTerimaVM')">
         
             <listbox mold="paging" width="100%" vflex="true" 
-                     
+                     nonselectableTags="*"
                      pageSize="5"
                      emptyMessage="Kosong euy!"
                      model="@load(vm.selectedProgress)">        
@@ -67,21 +67,31 @@
                 <rows>
                     <row>
                         Nama Penerima
-                        <textbox id="txt_penerima" 
-                                 hflex="3" 
-                                 value="" 
-                                 sclass="form-control input-primary" 
-                                 maxlength="80"
-                                 constraint="no empty"/>
+                        <combobox id="cmb_penerima"  
+                                  model="@load(vm.listNamaDirExp)" 
+                                  autodrop="true" 
+                                  buttonVisible="false" 
+                                  value="@save(vm.txtNamaPenerima)" 
+                                  width="100%" 
+                                  constraint="no empty,/^[a-zA-Z ]*$/">
+                            <template name="model">
+                                <comboitem label="@load(each.namaDirExp.toUpperCase())"/>
+                            </template>
+                        </combobox>
                     </row>
                     <row>
                         Divisi
-                        <textbox id="txt_div" 
-                                 hflex="3" 
-                                 value="" 
-                                 sclass="form-control input-primary" 
-                                 maxlength="80"
-                                 constraint="no empty"/>
+                        <combobox id="cmb_divisi"  
+                                  model="@load(vm.listDivisi)" 
+                                  autodrop="true" 
+                                  buttonVisible="false" 
+                                  value="@save(vm.txtDivisi)" 
+                                  width="100%" 
+                                  constraint="no empty,/^[a-zA-Z ]*$/">
+                            <template name="model">
+                                <comboitem label="@load(each.divisi.toUpperCase())"/>
+                            </template>
+                        </combobox>
                     </row> 
                 </rows>
                 <foot>
@@ -93,7 +103,7 @@
                          
                         </combobox>                       
                         <div class="btn-group" style="float:right;">
-                            <button onClick="@command('')" sclass="btn-success" iconSclass="glyphicon glyphicon-print" label="CETAK"/>
+                            <button onClick="@command('update')" sclass="btn-success" iconSclass="glyphicon glyphicon-print" label="CETAK"/>
                             <button onClick="win_serah_terima.detach()">BATAL</button>
                         </div>
                     </footer>
