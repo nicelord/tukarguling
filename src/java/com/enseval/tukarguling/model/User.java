@@ -14,8 +14,7 @@ public class User implements Serializable
     String username;
     String password;
     String akses;
-
-    @Transient
+    @ManyToOne
     Printer defPrinter;
     
     public User() {

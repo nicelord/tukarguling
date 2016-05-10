@@ -24,11 +24,11 @@
                        
                         <listitem style="border-bottom: 1px dotted #cfcfcf;" 
                                   if="${sessionScope.userCredential.getRoles()!='OPERATOR'}"
-                                  onClick="@command('changePage', page='menuUserSetting.zul')">
+                                  onClick="@command('changePage', page='menu_user_profil.zul')">
                             <listcell iconSclass="glyphicon glyphicon-user" />
                             <listcell label="PENGATURAN PROFIL"/>
                         </listitem>
-                        <listitem style="border-bottom: 1px dotted #cfcfcf;" onClick="@command('changePage', page='menuUserManager.zul')"
+                        <listitem style="border-bottom: 1px dotted #cfcfcf;" onClick="@command('changePage', page='menu_system_setting.zul')"
                                   if="${sessionScope.userCredential.getRoles()=='ADMINISTRATOR'}">
                             <listcell iconSclass="z-icon-cogs"/>
                             <listcell label="PENGATURAN SISTEM"/>

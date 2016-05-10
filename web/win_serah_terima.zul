@@ -97,11 +97,19 @@
                 <foot>
                     <footer span="2" align="left">
                         Printer : 
-                        <combobox id="cmb_printer"  value="" hflex="3" vflex="3" readonly="true" constraint="no empty" style="padding-right: 25px">
-                            
-                            <comboitem label="PRINTER" />
-                         
-                        </combobox>                       
+                        <combobox id="cmb_printer"  
+                                  model="@load(vm.printers)" 
+                                  hflex="3" vflex="3" 
+                                  readonly="true" 
+                                  constraint="no empty" 
+                                  style="padding-right: 25px"
+                                  selectedItem="@bind(vm.userLogin.defPrinter)">  
+                            <template name="model">
+                                <comboitem label="@load(each.namaPrinter)" value="@load(each.namaPrinter)"/>
+                            </template>
+                        </combobox>     
+                        
+                                        
                         <div class="btn-group" style="float:right;">
                             <button onClick="@command('update')" sclass="btn-success" iconSclass="glyphicon glyphicon-print" label="CETAK"/>
                             <button onClick="win_serah_terima.detach()">BATAL</button>

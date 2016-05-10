@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="serah-terima" pageWidth="612" pageHeight="396" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="7dafb8d3-fcf1-47c3-aee8-9b45e3b6027d">
-	<property name="ireport.zoom" value="1.0000000000000016"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="serah-terima" pageWidth="684" pageHeight="396" orientation="Landscape" columnWidth="684" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" isIgnorePagination="true" uuid="7dafb8d3-fcf1-47c3-aee8-9b45e3b6027d">
+	<property name="ireport.zoom" value="1.2100000000000026"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="196"/>
 	<style name="table" mode="Transparent">
 		<pen lineWidth="1.0" lineStyle="Dashed" lineColor="#000000"/>
 		<box>
@@ -51,68 +51,62 @@
 	</background>
 	<summary>
 		<band height="396">
-			<line>
-				<reportElement mode="Opaque" x="30" y="56" width="535" height="1" uuid="f96f3636-a2e5-4ca9-9a76-081e3eb6511e"/>
-				<graphicElement>
-					<pen lineWidth="0.75" lineStyle="Dashed"/>
-				</graphicElement>
-			</line>
 			<staticText>
-				<reportElement x="112" y="14" width="383" height="17" uuid="5ff0850e-1286-4fb7-bb16-08d0ae9b6224"/>
+				<reportElement x="29" y="14" width="619" height="17" uuid="5ff0850e-1286-4fb7-bb16-08d0ae9b6224"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Monospaced" size="12" isBold="false" pdfFontName="Courier" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[PT. ENSEVAL PUTERA MEGATRADING]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="112" y="31" width="383" height="16" uuid="e2f214fd-f91d-42b7-8d58-4e3f02a36a22"/>
+				<reportElement x="29" y="31" width="619" height="16" uuid="e2f214fd-f91d-42b7-8d58-4e3f02a36a22"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Monospaced" size="12" isBold="false" pdfFontName="Courier" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[TANDA TERIMA TUKAR GULING]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="152" y="302" width="69" height="26" uuid="e36525db-1b04-45d7-864a-aacf581f5571"/>
-				<textElement textAlignment="Justified" verticalAlignment="Middle">
+				<reportElement x="144" y="327" width="118" height="15" uuid="e36525db-1b04-45d7-864a-aacf581f5571"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Monospaced" size="10" pdfFontName="Courier" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[Penerima,]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="348" y="347" width="110" height="16" uuid="0ca3b7d9-68d5-4bad-b8a7-0f510ca27ce2"/>
+				<reportElement x="374" y="361" width="110" height="16" uuid="0ca3b7d9-68d5-4bad-b8a7-0f510ca27ce2"/>
 				<textElement textAlignment="Center">
 					<font fontName="Monospaced" pdfFontName="Courier" isPdfEmbedded="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{USER}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="377" y="302" width="55" height="26" uuid="b090d0e3-6a6b-44c6-af81-c434e5e95f91"/>
+				<reportElement x="403" y="327" width="55" height="15" uuid="b090d0e3-6a6b-44c6-af81-c434e5e95f91"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font fontName="Monospaced" size="10" pdfFontName="Courier" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[Petugas,]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="114" y="343" width="128" height="20" uuid="253bf257-6842-47cd-b44c-e86f7995e897"/>
+				<reportElement x="120" y="358" width="175" height="20" uuid="253bf257-6842-47cd-b44c-e86f7995e897"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Monospaced" size="10" pdfFontName="Courier" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{PENERIMA}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{PENERIMA} + "-" + $P{DIVSI}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="118" y="362" width="124" height="1" uuid="3ed82c84-1ead-463c-a0b0-010ba4b6728e"/>
+				<reportElement x="144" y="376" width="118" height="1" uuid="3ed82c84-1ead-463c-a0b0-010ba4b6728e"/>
 				<graphicElement>
 					<pen lineWidth="0.75" lineStyle="Dashed"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="365" y="363" width="81" height="1" uuid="bf883b31-0d2a-43c2-8101-a68921bb1d41"/>
+				<reportElement x="374" y="377" width="110" height="1" uuid="bf883b31-0d2a-43c2-8101-a68921bb1d41"/>
 				<graphicElement>
 					<pen lineWidth="0.75" lineStyle="Dashed"/>
 				</graphicElement>
 			</line>
 			<componentElement>
-				<reportElement key="table" style="table" x="30" y="85" width="535" height="201" uuid="6720edab-42ac-4ebe-9582-cc5df6a99efa"/>
+				<reportElement key="table" style="table" x="29" y="59" width="619" height="229" uuid="6720edab-42ac-4ebe-9582-cc5df6a99efa"/>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="Table Dataset 1" uuid="4a762699-29fd-461f-a21c-8b13e439f2fb">
 						<datasetParameter name="REPORT_DATA_SOURCE">
@@ -122,7 +116,7 @@
 					<jr:column width="76" uuid="d3eae60e-5ad0-4e90-b4f3-15205ef09f7d">
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="76" height="30" uuid="d0adb79c-2bad-4245-bfd7-f41ffcdc8381"/>
+								<reportElement x="2" y="0" width="74" height="30" uuid="d0adb79c-2bad-4245-bfd7-f41ffcdc8381"/>
 								<textElement verticalAlignment="Middle">
 									<font fontName="Monospaced" size="8"/>
 								</textElement>
@@ -179,10 +173,10 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="150" uuid="56c9e884-7789-4a0d-bda0-9f39b67f492c">
+					<jr:column width="186" uuid="56c9e884-7789-4a0d-bda0-9f39b67f492c">
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="150" height="30" uuid="3c1cec11-150a-4c77-b774-1acb51789761"/>
+								<reportElement x="0" y="0" width="176" height="30" uuid="3c1cec11-150a-4c77-b774-1acb51789761"/>
 								<textElement verticalAlignment="Middle">
 									<font fontName="Monospaced" size="8"/>
 								</textElement>
@@ -191,7 +185,7 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField>
-								<reportElement x="0" y="0" width="150" height="20" uuid="0aef5387-a73b-4574-9cc2-09ce15408258"/>
+								<reportElement x="0" y="0" width="176" height="20" uuid="0aef5387-a73b-4574-9cc2-09ce15408258"/>
 								<textElement verticalAlignment="Middle">
 									<font fontName="Monospaced" size="8"/>
 								</textElement>
@@ -199,10 +193,10 @@
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="128" uuid="cc2bcc35-e225-48c4-a6e2-e5d110dd7553">
+					<jr:column width="227" uuid="cc2bcc35-e225-48c4-a6e2-e5d110dd7553">
 						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="128" height="30" uuid="71e68ad3-ad12-4286-84c5-213225666cf0"/>
+								<reportElement x="0" y="0" width="227" height="30" uuid="71e68ad3-ad12-4286-84c5-213225666cf0"/>
 								<textElement verticalAlignment="Middle">
 									<font fontName="Monospaced" size="8"/>
 								</textElement>
@@ -211,7 +205,7 @@
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="20" rowSpan="1">
 							<textField isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="128" height="20" uuid="0dd2853f-8fd1-4bc9-bf46-5116d2494f59"/>
+								<reportElement x="0" y="0" width="227" height="20" uuid="0dd2853f-8fd1-4bc9-bf46-5116d2494f59"/>
 								<textElement verticalAlignment="Middle">
 									<font fontName="Monospaced" size="8"/>
 								</textElement>
@@ -221,6 +215,20 @@
 					</jr:column>
 				</jr:table>
 			</componentElement>
+			<staticText>
+				<reportElement x="358" y="309" width="70" height="20" uuid="376c1ef6-f0e4-4c2d-80d9-c0bc2fd97f03"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Monospaced"/>
+				</textElement>
+				<text><![CDATA[Pontianak,]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="428" y="309" width="130" height="20" uuid="9ba46672-947d-4601-a831-6bf7500d2ab0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Monospaced"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>

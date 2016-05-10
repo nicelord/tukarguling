@@ -1,0 +1,205 @@
+<?init class="com.enseval.tukarguling.util.AuthenticationInit"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <style>
+        .z-datebox-input,.z-combobox-input,.z-combobox-button,.z-datebox-button{
+        height:30px;
+        }
+        
+    </style>
+    
+    <div self="@define(content)" vflex="3">
+        <tabbox id="tb" orient="left" vflex="3">
+            <tabs id="tabs" width="120px" >
+                <tab label="PENGGUNA" />
+                <tab label="PRINTER" />
+            </tabs>
+            <tabpanels apply="org.zkoss.bind.BindComposer"  viewModel="@id('vm') @init('com.enseval.tukarguling.vm.MenuSystemSettingVM')">
+                <tabpanel>
+                    <window title="PENGATURAN PENGGUNA" vflex="1" >
+                        <borderlayout>
+                            <center>
+                                <listbox id="listTtss" mold="paging" width="100%" vflex="1" pageSize="10" 
+                                         checkmark="${sessionScope.userCredential.getRoles()=='ADMINISTRATOR'}" 
+                                         multiple="${sessionScope.userCredential.getRoles()=='ADMINISTRATOR'}" 
+                                         selectedItems="@bind(vm.selectedUsers)"
+                                         emptyMessage="Kosong euy!"
+                                         model="@load(vm.users)">        
+                                             
+                                    <custom-attributes org.zkoss.zul.listbox.rod="false"/>
+                        
+                                    <auxhead>
+                                        <auxheader colspan="4">
+                                            <button vflex="3" hflex="3" sclass="btn-success btn-xs" iconSclass="glyphicon glyphicon-user" label="TAMBAH PENGGUNA" onClick="@command('tambahUser')"/>
+                                        </auxheader>
+                                    </auxhead>
+                        
+                                    <listhead sizable="true" visible="true" >
+                                        <listheader width="30px" />
+                                        <listheader sort="auto(id)" label="USER ID" width="70px"/>
+                                        <listheader sort="auto(username)" label="USERNAME"/>
+                                        <listheader sort="auto(akses)" label="AKSES"/>
+                                    </listhead>
+                        
+                                    <auxhead>
+                                        <auxheader>
+                                            <image id="" src="img/filter.png" width=""  height=""/>
+                                        </auxheader>
+                                        <auxheader>
+                                            <textbox instant="true" value="@bind(vm.filterID)" hflex="3" onChange="@command('saring')"/>
+                                        </auxheader>
+                                        <auxheader>
+                                            <textbox instant="true" value="@bind(vm.filterUsername)" hflex="3" onChange="@command('saring')"/>
+                                        </auxheader>
+                                        <auxheader>
+                                            <textbox instant="true" value="@bind(vm.filterAkses)" hflex="3" onChange="@command('saring')"/>
+                                        </auxheader>
+                                    </auxhead>
+                    
+                                    <template name="model" var="s">
+                                        <listitem sclass="mainList" onClick="@command('showDetail', user=s)">
+                                            <listcell />
+                                            <listcell label="@load(s.id)"/>
+                                            <listcell label="@load(s.username)"/>
+                                            <listcell label="@load(s.akses)"/>
+                                        </listitem>
+                                    </template>
+                    
+                                    <listfoot>
+                                        <listfooter span="5" valign="middle">
+                                            <div style="float:left;">
+                                                <button onClick="@command('hapusSelectedUsers')" hflex="3" sclass="btn-default" iconSclass="glyphicon glyphicon-trash" label="HAPUS TERPILIH" 
+                                                        if="${sessionScope.userCredential.getRoles()=='ADMINISTRATOR'}"/>
+                                            </div>
+                                        </listfooter>
+                                    </listfoot>		
+                                </listbox>
+                
+                            </center>
+                            <east title="DETAIL USER" size="50%" splittable="true" collapsible="true">
+                                <div vflex="3" hflex="3">
+                                    <vbox align="center" hflex="3" vflex="3">
+                                        <grid hflex="3" vflex="3">
+                                            <columns>
+                                                <column align="left" width="25%"/>
+                                                <column/>
+                                            </columns>
+                                            <rows>
+                                                <row>
+                                                    USER ID
+                                                    <div>
+                                                        <label value="@load(vm.user.id)"/>
+                                                    </div>
+                                        
+                                                </row>
+                                    
+                                                <row>
+                                                    NAMA
+                                                    <textbox id="nama" value="@bind(vm.user.nama)" sclass="form-control input-primary" constraint="no empty"/>
+                                                </row>
+                                                <row>
+                                                    USERNAME
+                                                    <textbox id="username" value="@bind(vm.user.username)" sclass="form-control input-primary" constraint="no empty"/>
+                                                </row>
+                                                <row>
+                                                    PASSWORD
+                                                    <textbox id="password" type="password" value="@bind(vm.user.password)" sclass="form-control input-primary" constraint="no empty"/>
+                                                </row> 
+                                                <row>
+                                                    AKSES
+                                                    <combobox id="akses" hflex="3" value="@bind(vm.user.akses)" readonly="true" constraint="no empty">
+                                                        <comboitem label="USER"/>
+                                                        <comboitem label="ADMINISTRATOR"/>
+                                                    </combobox>
+                                                </row> 
+                                    
+                                                <row>
+                                                    DEFAULT PRINTER
+                                                    <combobox id="printer"  model="@load(vm.printers)" selectedItem="@bind(vm.user.defPrinter)" hflex="3" vflex="3" readonly="true" constraint="no empty">
+                                                        <template name="model">
+                                                            <comboitem label="@load(each.namaPrinter)" value="@load(each.namaPrinter)"/>
+                                                        </template>
+                                                    </combobox>
+                                                </row>
+                                            </rows>
+                                            <foot>
+                                                <footer span="2">
+                                                    <hlayout>
+                                                        <button onClick="@command('simpan')" hflex="3" sclass="btn-default" iconSclass="glyphicon glyphicon-floppy-disk" label="SIMPAN" 
+                                                                if="${sessionScope.userCredential.getRoles()=='ADMINISTRATOR'}">
+                                                            <attribute name="onClick">
+                                                                <!-- inputDate.setValue(new Date()); -->
+                                                                nama.getValue();
+                                                                username.getValue();
+                                                                password.getValue();
+                                                                akses.getValue();
+                                                                printer.getValue();
+                                                                
+                                                            </attribute>
+                                                        
+                                                        </button>
+                                                    </hlayout>
+                                                </footer>
+                                            </foot>
+                                        </grid>
+                                    </vbox>
+                      
+                                </div>
+                            </east>
+                        </borderlayout>
+                    </window>
+                </tabpanel>
+                <tabpanel>
+                    
+                    <window title="REGISTER PRINTER" >
+                        <listbox id="box" 
+                                 mold="paging" width="100%" vflex="true" pageSize="10" 
+                                 emptyMessage="Kosong euy!"
+                                 model="@load(vm.printers)">
+                            
+                            <auxhead>
+                                <auxheader colspan="2">
+                                    <textbox hflex="3" value="@bind(vm.namaPrinter)" sclass="form-control input-primary"/> 
+                                </auxheader>
+                                <auxheader>
+                                    <textbox hflex="3" value="@bind(vm.keterangan)" sclass="form-control input-primary"/> 
+                                </auxheader>
+                                <auxheader>
+                                    <button class="btn-success btn-xs" iconSclass="glyphicon glyphicon-plus" onClick="@command('tambahPrinter')">TAMBAH</button>
+                                
+                                </auxheader>
+                            </auxhead>
+                            
+                                            
+                            <listhead>
+                                <listheader label="ID" width="35px"/>
+                                <listheader label="Nama Printer" />
+                                <listheader label="Keterangan" />
+                                <listheader label="HAPUS" width="100px"/>
+                            </listhead>
+                            <template name="model" var="s">
+                                <listitem sclass="prnList">
+                                    <listcell label="@load(s.id)"/>
+                                    <listcell label="@load(s.namaPrinter)"/>
+                                    <listcell label="@load(s.keterangan)"/>
+                                    <listcell>
+                                        <button class="btn-xs btn-danger" iconSclass="glyphicon glyphicon-trash" onClick="@command('hapusPrinter',printernya=s)">HAPUS</button>
+                                    </listcell>
+                                    
+                                </listitem>
+                            </template>
+                            <listfoot>
+                              
+                            </listfoot>
+                            
+                        </listbox>
+                    </window>
+                
+                </tabpanel>
+               
+            </tabpanels>
+        </tabbox>
+        
+    </div>
+   
+</zk>

@@ -7,7 +7,9 @@ package com.enseval.tukarguling.vm;
 
 import com.avaje.ebean.Ebean;
 import com.enseval.tukarguling.model.Cetak;
+import com.enseval.tukarguling.model.Printer;
 import com.enseval.tukarguling.model.Progress;
+import com.enseval.tukarguling.model.User;
 import com.enseval.tukarguling.util.AuthenticationService;
 import com.enseval.tukarguling.util.AuthenticationServiceImpl;
 import java.awt.print.PrinterException;
@@ -73,9 +75,11 @@ public class WinSerahTerimaVM {
 
     String txtDivisi, txtNamaPenerima;
     List<Progress> listNamaDirExp = new ArrayList(), listDivisi = new ArrayList<>();
-
-    String printernya = "Foxit Reader PDF Printer";
-
+    
+    List<Printer> printers = Ebean.find(Printer.class).findList();
+    
+    User userLogin;
+    
     @AfterCompose
     public void initSetup(@ContextParam(ContextType.VIEW) Component view,
             @ExecutionArgParam("selected_progress") List<Progress> selectedProgress) {
@@ -83,6 +87,7 @@ public class WinSerahTerimaVM {
         this.selectedProgress = selectedProgress;
         listNamaDirExp = Ebean.find(Progress.class).select("namaDirExp").setDistinct(true).findList();
         listDivisi = Ebean.find(Progress.class).select("divisi").setDistinct(true).findList();
+        userLogin = new AuthenticationServiceImpl().getUserCredential().getUser();
         Selectors.wireComponents(view, this, false);
     }
 
@@ -105,7 +110,7 @@ public class WinSerahTerimaVM {
     public void cetak() {
         try {
             AttributeSet aset = new HashAttributeSet();
-            aset.add(new PrinterName(printernya, null));
+            aset.add(new PrinterName(userLogin.getDefPrinter().getNamaPrinter(), null));
             PrintService[] printService = PrintServiceLookup.lookupPrintServices(null, aset);
             if (printService == null) {
                 Messagebox.show("null printer", "Printer error", Messagebox.OK, Messagebox.ERROR);
@@ -124,9 +129,9 @@ public class WinSerahTerimaVM {
             map.put("DIVISI", txtDivisi);
             map.put("USER", new AuthenticationServiceImpl().getUserCredential().getName());
             JasperPrint jasperPrint = JasperFillManager.fillReport(Executions.getCurrent().getDesktop().getWebApp().getRealPath("/") + "/report/serah-terima.jasper", map, (JRDataSource) new JREmptyDataSource());
-            //jasperPrint.setOrientation(OrientationEnum.PORTRAIT);
-            jasperPrint.setOrientation(OrientationEnum.LANDSCAPE);
-            if (!printernya.equals("noprint")) {
+            jasperPrint.setOrientation(OrientationEnum.PORTRAIT);
+            //jasperPrint.setOrientation(OrientationEnum.LANDSCAPE);
+            if (!userLogin.getDefPrinter().getNamaPrinter().equals("noprint")) {
                 JRExporter exporter = (JRExporter) new JRPrintServiceExporter();
                 exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
                 System.out.println(printService[0].getAttributes());
@@ -187,6 +192,23 @@ public class WinSerahTerimaVM {
 
     public void setListDivisi(List<Progress> listDivisi) {
         this.listDivisi = listDivisi;
+    }
+
+
+    public List<Printer> getPrinters() {
+        return printers;
+    }
+
+    public void setPrinters(List<Printer> printers) {
+        this.printers = printers;
+    }
+
+    public User getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(User userLogin) {
+        this.userLogin = userLogin;
     }
 
 }
