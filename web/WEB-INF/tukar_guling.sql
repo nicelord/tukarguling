@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2016-05-05 03:32:46
+Date: 2016-05-10 17:24:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -1429,12 +1429,14 @@ CREATE TABLE `printer` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of printer
 -- ----------------------------
 INSERT INTO `printer` VALUES ('noprint', 'noprint', '16');
+INSERT INTO `printer` VALUES ('EPSON M100 Series', 'EPSON M100 Series', '20');
+INSERT INTO `printer` VALUES ('\\\\http://10.102.4.65:631\\Ptk_prn_fin04', 'Ptk_prn_fin04', '21');
 
 -- ----------------------------
 -- Table structure for progress
@@ -1460,21 +1462,23 @@ CREATE TABLE `progress` (
   PRIMARY KEY (`id`),
   KEY `cst` (`customer_id`),
   CONSTRAINT `cst` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of progress
 -- ----------------------------
-INSERT INTO `progress` VALUES ('1', '88888', 'PTK-16-2685651353', '2016-04-27 17:12:15', '387558', 'SCASD', '2016-04-27', 'asdas', '2016-04-27', 'asdas', '2016-04-27', 'oke', 'fsdfsd', 'sdfd', 'admin', 'EXP');
-INSERT INTO `progress` VALUES ('3', '88888', 'PTK-16-2685651353', '2016-04-28 08:58:34', '387580', 'admin', '2016-04-28', null, null, null, null, 'adsdasda cvc', null, null, null, null);
-INSERT INTO `progress` VALUES ('4', '88888', 'PTK-16-2685651353', '2016-04-28 09:04:42', '387580', 'admin', '2016-04-28', null, null, null, null, null, null, null, null, null);
-INSERT INTO `progress` VALUES ('5', '88888', 'PTK-16-2685651353', '2016-04-28 09:10:27', '387575', 'admin', '2016-04-28', null, null, null, null, 'asdasd', null, null, null, null);
-INSERT INTO `progress` VALUES ('6', '123', '123', '2016-04-30 14:59:41', '387617', 'admin', '2016-04-30', null, null, null, null, null, null, null, null, null);
-INSERT INTO `progress` VALUES ('7', '231231231', '2121212', '2016-04-30 15:04:46', '387619', 'admin', '2016-04-30', null, null, null, null, null, null, null, null, null);
-INSERT INTO `progress` VALUES ('8', '5645645644456', '564564564564646', '2016-04-30 15:09:09', '387805', 'admin', '2016-04-30', null, null, null, null, null, null, null, null, null);
-INSERT INTO `progress` VALUES ('9', '222222', '2222222', '2016-04-30 15:40:44', '387571', 'admin', '2016-04-30', null, null, null, null, 'asdasd', null, null, null, null);
-INSERT INTO `progress` VALUES ('10', '123', '123', '2016-05-04 22:38:52', '387573', 'admin', '2016-05-04', null, null, null, null, 'qwe', null, null, null, null);
-INSERT INTO `progress` VALUES ('11', '222222', '222222', '2016-05-02 23:41:36', '387558', 'dasda', '2016-05-08', null, null, null, null, 'aaaaaaaa', null, null, null, null);
+INSERT INTO `progress` VALUES ('1', '88888', 'PTK-16-2685651353', '2016-04-27 17:12:15', '387558', 'SCASD', '2016-04-27', null, null, null, null, null, null, null, null, null);
+INSERT INTO `progress` VALUES ('3', '88888', 'PTK-16-2685651353', '2016-04-28 08:58:34', '387580', 'admin', '2016-04-28', null, null, null, null, null, null, null, null, null);
+INSERT INTO `progress` VALUES ('4', '88888', 'PTK-16-2685651353', '2016-04-28 09:04:42', '387580', 'admin', '2016-04-28', 'ASDAS', '2016-05-10', null, null, null, 'asdasdasdad a ad asdasdas', null, 'admin', 'DIV');
+INSERT INTO `progress` VALUES ('5', '88888', 'PTK-16-2685651353', '2016-04-28 09:10:27', '387575', 'admin', '2016-04-28', 'HYFGHQ', '2016-05-10', null, null, null, 'asdas', null, 'admin', 'ASDASDAS');
+INSERT INTO `progress` VALUES ('6', '123', '123', '2016-04-30 14:59:41', '387617', 'admin', '2016-04-30', null, '2016-05-10', null, null, null, 'sdf', null, 'admin', null);
+INSERT INTO `progress` VALUES ('7', '231231231', '2121212', '2016-04-30 15:04:46', '387619', 'admin', '2016-04-30', 'HYFGHQ', '2016-05-10', null, null, null, 'asd', null, 'admin', 'ASDASDAS');
+INSERT INTO `progress` VALUES ('8', '5645645644456', '564564564564646', '2016-04-30 15:09:09', '387805', 'admin', '2016-04-30', 'RIZA', '2016-05-10', null, null, null, 'sdfsdf', null, 'admin', 'DIV');
+INSERT INTO `progress` VALUES ('9', '222222', '2222222', '2016-04-30 15:40:44', '387571', 'admin', '2016-04-30', 'ASDAS', '2016-05-10', null, null, null, 'sdfsd', null, 'admin', 'DIV');
+INSERT INTO `progress` VALUES ('10', '123', '123', '2016-05-04 22:38:52', '387573', 'admin', '2016-05-04', null, '2016-05-10', null, null, null, 'df', null, 'admin', null);
+INSERT INTO `progress` VALUES ('11', '222222', '222222', '2016-05-02 23:41:36', '387558', 'dasda', '2016-05-08', 'RIZA', '2016-05-10', null, null, null, 'sdf', null, 'admin', 'DIV');
+INSERT INTO `progress` VALUES ('12', 'asdsad', 'asdsd', '2016-05-10 13:22:11', '387634', 'admin', '2016-05-10', 'ASDAS', '2016-05-10', null, null, null, 'sdf', null, 'admin', 'DIV');
+INSERT INTO `progress` VALUES ('13', 'ASDASD', 'ASDFSF', '2016-05-10 13:22:35', '387575', 'admin', '2016-05-10', 'ASBDASBH', '2016-05-10', null, null, null, 'gdfg', null, 'admin', 'ASDASDAS');
 
 -- ----------------------------
 -- Table structure for setting
@@ -1513,10 +1517,13 @@ CREATE TABLE `user` (
   `username` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `akses` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `def_printer_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `asd` (`def_printer_id`),
+  CONSTRAINT `asd` FOREIGN KEY (`def_printer_id`) REFERENCES `printer` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', 'admin', 'admin', 'ADMINISTRATOR');
+INSERT INTO `user` VALUES ('1', 'admin', 'admin', 'admin', 'ADMINISTRATOR', '20');
